@@ -1,0 +1,21 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %} 
+
+    {% block content %}
+        <div class="border_line"></div>    
+		
+		<section class="portfolio_details_area p_120">
+        	<div class="container">
+        		<div class="portfolio_details_inner">
+        			<form action="{% url 'delete_dog_url' category slug %}" method="post">
+        				{% csrf_token %}
+						<h3>Действительно удалить "{{ dog.name }}"?</h3>
+						<a href="{{ dog.get_absolute_url }}" class="banner_btn2">Отмена</a>
+						<button type="submit" class="banner_btn">Удалить</button>
+        			</form>
+				</div>
+			</div>
+		</section>	
+				
+    {%endblock%}  

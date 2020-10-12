@@ -1,0 +1,132 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %} 
+
+
+
+    {% block content %}
+         <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img class="img-fluid" src="{% static 'img/slider/s1.jpg' %}" alt="">
+                        <div class="slider_text_inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="slider_text">
+                                            <h2>Добро пожаловать на сайт <br>Bona Sforza</h2>
+                                            <p>питомник собак FCI</p>
+                                            <a class="banner_btn" href="{% url 'contact' %}">Связаться с нами</a>
+                                            <a class="banner_btn2" href="#">Подробнее о нас</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide"><img class="img-fluid" src="{% static 'img/slider/s2.jpg' %}" alt="">
+                        <div class="slider_text_inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="slider_text">
+                                            <h2>Лабрадор ретривер</h2>
+                                            <br>
+                                            <a class="banner_btn" href="{% url 'dog_list_url' category='labrador_boys' %}">Подробнее</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide"><img class="img-fluid" src="{% static 'img/slider/s3.jpg' %}" alt="">
+                        <div class="slider_text_inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="slider_text">
+                                            <h2>Кавалер <br />Кинг Чарльз спаниель</h2>
+                                            <br>
+                                            <a class="banner_btn" href="#">Подробнее</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        <div class="border_line"></div>
+        
+        <!--================Mission Area =================-->
+        <section class="mission_area">
+            <div class="row m0">
+                <div class="col-lg-6 p0">
+                    <div class="left_img"><img src="{% static 'img/m1.jpg' %}" alt=""></div>
+                </div>
+                <div class="col-lg-6 p0">
+                    <div class="mission_slider owl-carousel">
+                        <div class="item">
+                            <div class="mission_text">
+                                <h4>Профессиональное выращивание</h4>
+                                <p>Более 10 лет наши питомцы радуют своих хозяев.</p>
+                            </div>
+                            <div class="mission_text">
+                                <h4>Профессиональное выращивание</h4>
+                                <p>Более 10 лет наши питомцы радуют своих хозяев.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="mission_text">
+                                <h4>Профессиональное выращивание</h4>
+                                <p>Более 10 лет наши питомцы радуют своих хозяев.</p>
+                            </div>
+                            <div class="mission_text">
+                                <h4>Профессиональное выращивание</h4>
+                                <p>Более 10 лет наши питомцы радуют своих хозяев.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Mission Area =================-->
+        
+        <!--================Success Area =================-->
+        <section class="success_area">
+            <div class="row m0">
+                <div class="col-lg-6 p0">
+                    <div class="mission_text">
+                        <a href="#">
+                            <h4>Охота и натаска</h4></a>
+                        <p>Подробнее...Подробнее...Подробнее...Подробнее...Подробнее...</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 p0">
+                    <div class="left_img">
+                        <img src="{% static 'img/m2.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+<!--             <div class="row m0 right_dir">
+                <div class="col-lg-6 p0">
+                    <div class="success_img">
+                        <img src="{% static 'img/m3.jpg' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 p0">
+                    <div class="mission_text">
+                        <h4>Галерея</h4>
+                        <p></p>
+                        <p>Подробнее Подробнее Подробнее Подробнее Подробнее Подробнее</p>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+        <!--================End Success Area =================-->
+        
+    {%endblock%}    

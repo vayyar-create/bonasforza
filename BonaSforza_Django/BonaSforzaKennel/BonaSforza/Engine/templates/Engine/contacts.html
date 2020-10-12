@@ -1,0 +1,103 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %}
+
+
+
+    {% block content %}
+
+        <!--================Contact Area =================-->
+        <section class="contact_area p_120">
+            <div class="container">
+                <img class="img-fluid" src="{% static 'img/slider/s1.jpg' %}" alt="">
+                <div class="row mt-5">
+                    <div class="col-lg-3">
+                        <div class="contact_info">
+                            <div class="info_item">
+                                <i class="lnr lnr-home"></i>
+                                <h6>Republic of Belarus</h6>
+                                <p>Brest region</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-phone-handset"></i>
+                                <h6>+375 29 644 13 69</h6>
+                                <h6>+375 29 322 94 69</h6>
+                                <p>Viber, Whatsapp</p>
+                            </div>
+                            <div class="info_item">
+                                <a href="https://www.facebook.com/viktar.trus" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                    <h6>Facebook</h6>
+                                </a>
+
+                                
+                            </div>
+                            <div class="info_item mt-2">
+                                <a href="https://vk.com/bonasforza" target="_blank">
+                                    <i class="fa fa-vk"></i>
+                                    <h6>Vk</h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+<!--                     <div class="col-lg-9">
+                        <form class="row contact_form" action="{% static 'contact_process.php' %}" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
+                            </div>
+                        </form>
+                    </div> -->
+                    <div class="col-lg-9">
+                        <form class="row contact_form" action="{% url 'contact' %}" method="post" id="contactForm" novalidate="novalidate">
+                            {% csrf_token %} 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.name }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.email }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.subject }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form.message }}
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </section>
+        <!--================Contact Area =================-->
+
+        <!-- contact js -->
+        <script src="{% static 'js/jquery.form.js' %}"></script>
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'js/contact.js' %}"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="{% static 'js/gmaps.min.js' %}"></script>
+        <script src="{% static 'js/theme.js' %}"></script>
+    {%endblock%}       

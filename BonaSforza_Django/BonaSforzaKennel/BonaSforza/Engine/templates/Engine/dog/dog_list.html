@@ -1,0 +1,93 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %} 
+
+
+
+
+
+    {% block content %}
+        <div class="border_line"></div>
+		
+    	<!--================Success Area =================-->
+        <section class="success_area">
+        	{% for dog in dogs %}
+				{% if forloop.counter|divisibleby:2 %}
+		            <div class="row ">
+		                <div class="col-lg-6 p0">
+		                    <div class="mission_text">
+		                        <a href="{{ dog.get_absolute_url }}"><h1>{{ dog.name }}</h1></a>
+		                    </div>
+		                </div>
+		                <div class="col-lg-6 p0">
+		                    <div class="success_img">
+		                    	{% if dog.main_image %}
+		                        <a href="{{ dog.get_absolute_url }}"><img class="img-fluid" src="{{ dog.main_image.url }}" alt=""></a>
+		                    	{% endif %}
+		                    </div>
+		                </div>
+		            </div>
+		            <!-- <div class="border_line"></div> -->
+		        {% else %}
+		        	<div class="row right_dir">
+		                <div class="col-lg-6 p0">
+		                    <div class="success_img">
+		                    	{% if dog.main_image %}
+		                        <a href="{{ dog.get_absolute_url }}"><img class="img-fluid" src="{{ dog.main_image.url }}" alt=""></a>
+		                    	{% endif %}
+		                    </div>
+		                </div>
+		                <div class="col-lg-6 p0">
+		                    <div class="mission_text">
+		                        <a href="{{ dog.get_absolute_url }}"><h1>{{ dog.name }}</h1></a>
+		                    </div>
+		                </div>
+		            </div>
+		        {% endif %}
+    		{% endfor %}
+	
+			{% if request.user.is_authenticated %}
+				<div class="container mt-4">
+					<div class="section-top-border">
+						<h3 class="mb-30 title_color">Admin</h3>
+						<div class="row">
+							<div class="col-md-3">
+								<h4 class="title_color">Добавить собаку</h4>
+							</div>
+							<div class="col-md-3">
+								<a href="{% url 'add_new_dog_url' category %}" class="banner_btn">Перейти</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}		
+
+
+        </section>
+        <!--================End Success Area =================-->
+                <!--================Project Area =================-->
+<!--         <section class="project_area">
+        	<div class="row m0">
+        		<div class="col-lg-4 col-md-6 p0">
+        			<div class="project_item">
+        				<img src="{% static 'img/m1.jpg' %}" alt="">
+        				<div class="hover_text">
+        					<h4>Питомник Bona Sforza</h4>
+        					<div class="cat">
+        						<a href="#">Lifestyle</a>
+        						
+        					</div>
+        					<a class="main_btn" href="#">View More</a>
+        				</div>
+        			</div>
+        		</div>
+
+        	</div>
+        </section>
+ -->        <!--================End Project Area =================-->
+
+
+
+
+
+    {% endblock %}  

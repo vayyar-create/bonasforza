@@ -1,0 +1,107 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %} 
+
+
+
+    {% block content %}
+        <div class="border_line"></div>    
+        <!--================Portfolio Details Area =================-->
+        <section class="portfolio_details_area p_120">
+	        <div class="row">
+	        	<div class="col-sm-1 previous">
+					<a class="mt-5" href="{% url 'dog_list_url' category %}"><span class="lnr lnr-chevron-left"></span></a>
+				</div>
+	        	<div class="col-sm-11">
+		        	<div class="container">
+		        		<div class="portfolio_details_inner">
+							<div class="row">
+								
+								<div class="col-md-6">
+									<div class="left_img gallery-item mt-4">
+		                    			{% if dog.main_image %}
+											<a href="{{ dog.main_image.url }}">
+												<img class="img-fluid" src="{{ dog.main_image.url }}" alt="">
+											</a>
+										{% endif %}	
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="portfolio_right_text">
+										<h1>{{ dog.name }}</h1>
+										<ul class="list mt-5">
+											<li><span>Дата рождения:</span>{{ dog.born_date }}</li>
+											<li class="border_line"></li>
+											<li><span>Родители:</span><br>{{ dog.parents|linebreaksbr }}</li>
+											<li class="border_line"></li>
+											{% if dog.breeder_or_kennel %}
+												<li><span>Заводчик/Питомник:</span> {{ dog.breeder_or_kennel|linebreaksbr }}</li>
+												<li class="border_line"></li>
+											{% endif %}
+											<li><span>Титулы:</span><br>  {{ dog.titles|linebreaksbr }}</li>
+											<li class="border_line"></li>
+											{% if dog.working_titles %}
+												<li><span>Рабочие дипломы:</span>  {{ dog.working_titles|linebreaksbr }}</li>
+												<li class="border_line"></li>
+											{% endif %}
+											{% if dog.tests %}
+												<li><span>Тесты:</span> {{ dog.tests|linebreaksbr }} </li>
+												<li class="border_line"></li>
+											{% endif %}
+											{% if dog.facebook %}
+												<li>Посмотреть на <a href="{{ dog.facebook }}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>acebook</a></li>
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+							</div>
+		        		</div>
+		        	</div>
+	        	</div>
+	        </div>
+
+
+				<div class="container">
+	        		<div class="section-top-border">
+						<div class="row gallery-item">
+							{% for d in dog.gallery.all  %}
+								{% if d.item %}
+									<div class="col-md-4">
+										<a href="{{ d.item.url }}" class="img-gal"><div class="single-gallery-image" style="background: url({{ d.item.url }});"></div></a>
+									</div>
+								{% endif %}	
+							{% endfor %}	
+						</div>
+					</div>
+				</div>
+
+					
+			{% if request.user.is_authenticated %}
+			
+        	<div class="container mt-4">
+				<div class="section-top-border">
+					<h3 class="mb-30 title_color">Admin</h3>
+					<div class="row mb-3">
+						<div class="col-md-3">
+							<h4 class="title_color">Обновить</h4>
+						</div>
+						<div class="col-md-2">
+							<a href="{% url 'update_dog_url' category slug %}" class="banner_btn">Перейти</a>
+						</div>
+					</div>
+					<div class="row section-top-border">
+						<div class="col-md-3">
+							<h4 class="title_color">Удалить</h4>
+						</div>
+						<div class="col-md-2">
+							<a href="{% url 'delete_dog_url' category slug %}" class="banner_btn">Перейти</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% endif %}
+
+        </section>
+        <!--================End Portfolio Details Area =================-->
+    {%endblock%}  

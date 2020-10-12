@@ -1,0 +1,48 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %}
+
+
+
+    {% block content %}
+        <section class="portfolio_details_area p_120">
+            <div class="whole-wrap">
+                <div class="container">
+                    <div class="portfolio_details_inner">
+                        <h3 class="mb-30 title_color">Вход</h3>
+                        <form class="form"  action="{% url 'login' %}" method="post">
+                            {% csrf_token %} 
+
+
+
+                            <div class="row mt-10">
+                                <div class="col-md-2">
+                                    <h4>Имя пользователя :</h4>
+                                </div>
+                                <div class="col-md-7">
+                                    {{ form.username }}
+                                </div>  
+                            </div>
+
+                            <div class="row mt-10">
+                                <div class="col-md-2">
+                                    <h4>Пароль :</h4>
+                                </div>
+                                <div class="col-md-7">
+                                    {{ form.password }}
+                                </div>  
+                            </div>
+
+                            <button type="submit" class="mt-4 banner_btn">Войти</button><br>
+                            <a href="{% url 'index' %}" class="banner_btn2 mt-3">На главную</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>                  
+
+
+
+
+
+    {% endblock %}

@@ -1,0 +1,186 @@
+{% extends 'Engine/main.html' %}
+
+{% load static %} 
+
+
+
+    {% block content %}
+        <div class="border_line"></div>    
+
+		<section class="portfolio_details_area p_120">
+			<div class="whole-wrap">
+	        	<div class="container">
+	        		<div class="portfolio_details_inner">
+	        			<h3 class="mb-30 title_color">Обновить информацию</h3>
+	        			<form class="form" enctype="multipart/form-data" action="{% url 'update_dog_url' category slug %}" method="post">
+							{% csrf_token %}
+
+							<div class="row mt-10">
+								{% if form.name.errors %}
+									<div class="alert alert-danger">
+										{{ form.name.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Имя :</h4>
+								</div>
+								<div class="col-md-7">
+ 									{{ form.name }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.born_date.errors %}
+									<div class="alert alert-danger">
+										{{ form.born_date.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Дата рождения :</h4>
+									(пр. 2012-03-08)
+								</div>
+								<div class="col-md-2">
+ 									{{ form.born_date }}
+ 								</div>
+
+							</div>
+
+
+							<div class="row mt-10">
+								{% if form.parents.errors %}
+									<div class="alert alert-danger">
+										{{ form.parents.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Родители :</h4>
+								</div>
+								<div class="col-md-8">
+ 									{{ form.parents }}
+ 								</div>	
+							</div>
+
+        					<div class="border_line">
+        						<h6>Необязательные данные</h6>
+        					</div>    
+
+
+							<div class="row mt-5">
+								{% if form.breeder_or_kennel.errors %}
+									<div class="alert alert-danger">
+										{{ form.breeder_or_kennel.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Заводчик/питомник :</h4>
+								</div>
+								<div class="col-md-7">
+ 									{{ form.breeder_or_kennel }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.titles.errors %}
+									<div class="alert alert-danger">
+										{{ form.titles.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Титулы :</h4>
+								</div>
+								<div class="col-md-10">
+ 									{{ form.titles }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.working_titles.errors %}
+									<div class="alert alert-danger">
+										{{ form.working_titles.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Рабочие дипломы :</h4>
+								</div>
+								<div class="col-md-10">
+ 									{{ form.working_titles }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.tests.errors %}
+									<div class="alert alert-danger">
+										{{ form.tests.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Тесты :</h4>
+								</div>
+								<div class="col-md-7">
+ 									{{ form.tests }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.facebook.errors %}
+									<div class="alert alert-danger">
+										{{ form.facebook.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Facebook :</h4>
+								</div>
+								<div class="col-md-10">
+ 									{{ form.facebook }}
+ 								</div>	
+							</div>
+
+							<div class="row mt-10">
+								{% if form.main_image.errors %}
+									<div class="alert alert-danger">
+										{{ form.main_image.errors }}
+									</div>
+								{% endif %}
+
+								<div class="col-md-2">
+									<h4>Главное фото :</h4>
+								</div>
+								<div class="col-md-4">
+ 									{{ form.main_image }}
+ 								</div>	
+							</div>
+
+
+							<div class="mt-3 mb-2">
+							<h4><span class="lnr lnr-picture"></span> Галерея :</h4>
+							</div>
+							{{ formset.management_form }}
+
+							{% for form in formset %}
+								{% for hidden in form.hidden_fields %}
+							        {{ hidden }}
+							    {% endfor %}
+								<div class="form-row mb-2">
+						            {{ form.item }}
+					            	<a class="btn banner_btn add-form-row"><h4 class="mt-2">+</h4></a>
+								</div>
+							{% endfor %}
+
+							<br>							
+							<button type="submit" class="mt-4 banner_btn">Обновить</button>
+							<a href="{{ dog.get_absolute_url }}" class="banner_btn2">Отмена</a>
+						</form>	
+					</div>
+				</div>
+			</div>
+		</section>	
+				
+    {%endblock%}
